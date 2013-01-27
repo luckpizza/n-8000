@@ -58,7 +58,8 @@ if using linux\
 \
 now you only need to configure the kernel we are going to build:\
 "cd ~/n-9000/kernel"\
-"make arch=arm p4notepq_00_defconfig"\
+"export ARCH=arm"\
+"make p4notepq_00_defconfig"\
 \
 and finally build it\
 "make"\
