@@ -6,74 +6,83 @@
 \paperw11900\paperh16840\margl1440\margr1440\vieww33400\viewh19520\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\f0\fs24 \cf0 In order to compile a n-900 kernel you need download the source code from samsung website from\
- {\field{\*\fldinst{HYPERLINK "http://opensource.samsung.com/reception/receptionSub.do?method=search&searchValue=N8000"}}{\fldrslt http://opensource.samsung.com/reception/receptionSub.do?method=search&searchValue=N8000}}\
+\f0\fs24 \cf0 Compiling n-9000 kernel\
 \
-There you will find the many different source codes zipped, download the last one and proceed. \
+1. Getting the source code \
 \
-This Tutorial was made using the code from the revision {\field{\*\fldinst{HYPERLINK "javascript:void(0);"}}{\fldrslt 
+  In order to compile a n-900 kernel you need download the source code from samsung website from: {\field{\*\fldinst{HYPERLINK "http://opensource.samsung.com/reception/receptionSub.do?method=search&searchValue=N8000"}}{\fldrslt http://opensource.samsung.com/reception/receptionSub.do?method=search&searchValue=N8000}}\
+\
+  There you will find many different source codes zipped, download the last one and proceed. \
+\
+  This Tutorial was made using the code from the revision {\field{\*\fldinst{HYPERLINK "javascript:void(0);"}}{\fldrslt 
 \f1 \cf2 \ul \ulc2 GT-N8000_JB_Opensource_Update3.zip}}
 \f1 \
 
-\f0 Unzip it and inside you will find a Kernel.tar.gz inside.\
+\f0   Unzip it to a folder, where inside you will find a Kernel.tar.gz  file containing the hole source code of the kernel\
 \
-Create a directory \
-"mkdir ~/n-9000 "\
-"mkdir ~/n-9000/kernel "\
+  Create the directories to work in: \
+    "mkdir ~/n-9000 "\
+    "mkdir ~/n-9000/kernel "\
 \
 \
-copy the Kernel.tar.gz there \
-"cp <UNZIPPED_PATH/Kernel.tar.gz ~/n-9000/kernel/"\
-unzip it\
-"cd ~/n-9000/kernel"\
-"tar -zxvf Kernel.tar.gz "\
+  copy the Kernel.tar.gz there \
+     "cp <UNZIPPED_PATH/Kernel.tar.gz ~/n-9000/kernel/"\
+  un-tar it\
+     "cd ~/n-9000/kernel"\
+     "tar -zxvf Kernel.tar.gz "\
 \
-Now we need a gcc toolchain to compile the kernel for ARM\
+2. Getting the right gcc toolchain\
 \
-Download prebuilt gcc toolchain for cross compiling:\
+  Now we need a gcc toolchain to compile the kernel for ARM\
+\
+  Download prebuilt gcc toolchain for cross compiling:\
 \pard\pardeftab720
 
-\f2\fs26 \cf3 \cb4 "cd .."\
-"git clone https://android.googlesource.com/platform/prebuilt"
+\f2\fs26 \cf3 \cb4    "cd .."\
+   "git clone https://android.googlesource.com/platform/prebuilt"
 \f3 \
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
 \f0\fs24 \cf0 \cb1 \
-for more information about it, please visit {\field{\*\fldinst{HYPERLINK "http://source.android.com/source/building-kernels.html"}}{\fldrslt 
+  for more information about it, please visit {\field{\*\fldinst{HYPERLINK "http://source.android.com/source/building-kernels.html"}}{\fldrslt 
 \f3\fs26 \cf3 \cb4 http://source.android.com/source/building-kernels.html}}
 \f3\fs26 \cf3 \cb4 \
 \
 \pard\pardeftab720
 
-\f0\fs24 \cf0 \cb1 now we need to configure the compiler and toolchain we just downloaded to be used to compile the kernel. To do that execute:\
-if  you are using Mac OSX:\
-"
+\f0\fs24 \cf0 \cb1 3. Configuring everything\
+\
+  now we need to configure the compiler and toolchain we just downloaded to be used to compile the kernel. To do that execute:\
+  if  you are using Mac OSX:\
+      "
 \f3\fs26 \cb4 export CROSS_COMPILE=~/n-9000/prebuilt/darwin-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-"
 \f0\fs24 \cb1  \
-or \
-"
+  or \
+     "
 \f3\fs26 \cb4 export CROSS_COMPILE=~/n-9000/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-"
 \f0\fs24 \cb1  \
-if using linux\
+  if using linux\
 \
-now you only need to configure the kernel we are going to build:\
-"cd ~/n-9000/kernel"\
-"export ARCH=arm"\
-"make p4notepq_00_defconfig"\
+  now you only need to configure the kernel we are going to build:\
+     "cd ~/n-9000/kernel"\
+     "export ARCH=arm"\
+     "make p4notepq_00_defconfig"\
 \
-and finally build it\
-"make"\
+4. Building the kernel\
+  Finally build it!\
+     "make"\
 \
-after a cupple of minutes, you will have your kernel \
-"arch/arm/boot/zImage "\
+  after a cupple of minutes, you will have your kernel \
+     "arch/arm/boot/zImage "\
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 \cf0 \
+5. Troubleshooting \
 \
-if you experience some issues while compiling, please try downloading the patch from \
-{\field{\*\fldinst{HYPERLINK "https://github.com/luckpizza/n-8000/blob/master/default_configuration/patches/recordmcount.patch"}}{\fldrslt https://github.com/luckpizza/n-8000/blob/master/default_configuration/patches/recordmcount.patch}}\
-copy it to the kernel source dir and execute\
-"patch scripts/recordmcount.old.c recordmcount.path "\
-This is a temporally workaround till a real patch is submitted\
+  if you experience some issues while compiling, please try downloading the patch from \
+  {\field{\*\fldinst{HYPERLINK "https://github.com/luckpizza/n-8000/blob/master/default_configuration/patches/recordmcount.patch"}}{\fldrslt https://github.com/luckpizza/n-8000/blob/master/default_configuration/patches/recordmcount.patch}}\
+  copy it to the kernel source dir and execute\
+     "patch scripts/recordmcount.old.c recordmcount.path "\
+  This is a temporally workaround till a real patch is submitted\
 \
 \
 \
