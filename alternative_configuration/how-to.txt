@@ -1,5 +1,8 @@
 Making changes in the kernel configuration
 
+
+Please before reading this how-to, take a look at the one for building a kernel with the default configuration. it contains the basic step to build a kernel
+
 1. Configuring the kernel
  You can find the new configuration for the built kernel in ./configuration/.config
  To build this configuration, we build and execute the menuconfig by doing in the kernel directory

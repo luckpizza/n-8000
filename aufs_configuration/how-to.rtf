@@ -6,6 +6,8 @@
 
 \f0\fs24 \cf0 Adding AUFS support to a n-8000 kernel\
 \
+Please before reading this how-to, take a look at the one for building a kernel with the default configuration. it contains the basic step to build a kernel\
+\
 1. Get the AUFS sources:\
 go to your working directory (will assume you have a folder with the kernel and the gcc toolchain there) and clone the source with:\
   git clone {\field{\*\fldinst{HYPERLINK "http://aufs.git.sourceforge.net/git/gitweb.cgi?p=aufs/aufs3-standalone.git;a=summary"}}{\fldrslt 
@@ -17,13 +19,17 @@ go to your working directory (will assume you have a folder with the kernel and 
 Checkout to the right branch, in our case the N-8000 kernel is base on linux 3.0 kernel, so we can do this doing:\
  git checkout origin/aufs3.0\
 \
-Copy the following .patch files to the kernel root directory:\
-cp aufs3-base.patch ../n8000-kernel/\
-cp aufs3-kbuild.patch ../n8000-kernel/\
-cp aufs3-proc_map.patch ../n8000-kernel/\
-cp aufs3-standalone.patch ../n8000-kernel/\
+2. Copy necessary files\
 \
-and apply them, by doing:\
+  copy files from Documentation and fs  as well as include/linux/aufs_type.h to the corresponding kernel folders\
+\
+  Copy the following .patch files to the kernel root directory:\
+     cp aufs3-base.patch ../n8000-kernel/\
+     cp aufs3-kbuild.patch ../n8000-kernel/\
+     cp aufs3-proc_map.patch ../n8000-kernel/\
+     cp aufs3-standalone.patch ../n8000-kernel/\
+\
+3. Apply the patches\
 \
     patch -p1 < aufs3-base.patch\
     patch -p1 < aufs3-kbuild.patch\
@@ -31,7 +37,7 @@ and apply them, by doing:\
     patch -p1 < aufs3-standalone.patch\
 \
 \
-2. Compile the kernel\
+4. Compile the kernel\
 Compiling the kernel and modules should be as easy as executing:\
     make\
 The compiled kernel should be as usual in\
@@ -40,7 +46,7 @@ and the new module should be in: \
     fs/aufs/aufs.ko\
 \
 \
-3. Troubleshooting \
+5. Troubleshooting \
   - When applying patches\
   it may happen, that when trying to apply the aufs3-kbuild.patch the following error appear:\
     patching file fs/Makefile\
