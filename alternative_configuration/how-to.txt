@@ -1,0 +1,31 @@
+Making changes in the kernel configuration
+
+1. Configuring the kernel
+ You can find the new configuration for the built kernel in ./configuration/.config
+ To build this configuration, we build and execute the menuconfig by doing in the kernel directory
+    "make menuconfig"
+  after this, one by one you should search the different configurations using the "/" shortcut to search in the menu.
+  After finding each of them, I add them with the "*" (this is done, pressing the "space bar" over the feature you want to add). The kernel I downloaded, didn't have 2 configurations, which I left out, those arer:
+    
+    CONFIG_CGROUP_MEM_RES_CTLR_SWAP
+    CONFIG_SECURITY_FILE_CAPABILITIES
+
+2. Compiling 
+  When compiling again with
+     "make" 
+
+3. TroubleShooting 
+
+  it may show some configuration errors, for example I got:
+
+    arch/arm/mvp/commkm/check_kconfig.c:74:2: error: #error "MVP not tested with migration features other than CONFIG_MEMORY_HOTPLUG and CONFIG_COMPACTION"
+    make[2]: *** [arch/arm/mvp/commkm/check_kconfig.o] Error 1
+    make[1]: *** [arch/arm/mvp/commkm] Error 2
+    make: *** [arch/arm/mvp] Error 2
+
+  This can be solve changing the configuration 
+      # CONFIG_VMWARE_MVP=y
+  To
+      # CONFIG_VMWARE_MVP is not set
+
+  after all this change, the kernel compiles correctly with all the modules
