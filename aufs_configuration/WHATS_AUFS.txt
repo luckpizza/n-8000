@@ -1,0 +1,5 @@
+Whats AUFS?
+
+AUFS is a stackable unification file system. What does this mean? That the you can merge, and use many directories as they where only one, keeping the physical division intact, so in fact this is only a logical union. It supports read-only or read-write permissions, what means that if you are writing a files to this unified directory, it will store the files in the different directories added to this logical directory. This is done totally transparent, so the user actually does't know that he is writing in different places physicaly 
+One useful use of this technology is, for example, if you have the disk divided in many small partitions, or you have many small disks but you need a big directory, add them all together to one logical directory and problem solve. AUFS will automatically balance where to write and where to read.
+Another important feature is that it supports a huge amount of branches (this directories mounted in one big directory) 
