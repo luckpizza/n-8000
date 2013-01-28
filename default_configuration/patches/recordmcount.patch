@@ -1,3 +1,7 @@
+diff --git a/scripts/recordmcount.c b/scripts/recordmcount.c
+index ee52cb8..69175ab 100644
+--- a/scripts/recordmcount.c
++++ b/scripts/recordmcount.c
 @@ -32,6 +32,16 @@
  #include <stdlib.h>
  #include <string.h>
