@@ -6,7 +6,7 @@
 \paperw11900\paperh16840\margl1440\margr1440\vieww33400\viewh19520\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\f0\fs24 \cf0 Compiling n-9000 kernel\
+\f0\fs24 \cf0 Compiling n-8000 kernel\
 \
 1. Getting the source code \
 \
@@ -21,14 +21,14 @@
 \f0   Unzip it to a folder, where inside you will find a Kernel.tar.gz  file containing the hole source code of the kernel\
 \
   Create the directories to work in: \
-    "mkdir ~/n-9000 "\
-    "mkdir ~/n-9000/kernel "\
+    "mkdir ~/n-8000 "\
+    "mkdir ~/n-8000/kernel "\
 \
 \
   copy the Kernel.tar.gz there \
-     "cp <UNZIPPED_PATH/Kernel.tar.gz ~/n-9000/kernel/"\
+     "cp <UNZIPPED_PATH/Kernel.tar.gz ~/n-8000/kernel/"\
   un-tar it\
-     "cd ~/n-9000/kernel"\
+     "cd ~/n-8000/kernel"\
      "tar -zxvf Kernel.tar.gz "\
 \
 2. Getting the right gcc toolchain\
@@ -55,16 +55,16 @@
   now we need to configure the compiler and toolchain we just downloaded to be used to compile the kernel. To do that execute:\
   if  you are using Mac OSX:\
       "
-\f3\fs26 \cb4 export CROSS_COMPILE=~/n-9000/prebuilt/darwin-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-"
+\f3\fs26 \cb4 export CROSS_COMPILE=~/n-8000/prebuilt/darwin-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-"
 \f0\fs24 \cb1  \
   or \
      "
-\f3\fs26 \cb4 export CROSS_COMPILE=~/n-9000/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-"
+\f3\fs26 \cb4 export CROSS_COMPILE=~/n-8000/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin/arm-eabi-"
 \f0\fs24 \cb1  \
   if using linux\
 \
   now you only need to configure the kernel we are going to build:\
-     "cd ~/n-9000/kernel"\
+     "cd ~/n-8000/kernel"\
      "export ARCH=arm"\
      "make p4notepq_00_defconfig"\
 \
